@@ -1,0 +1,20 @@
+{
+  "name": "letter-opener",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Translate and forward webhook payloads",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronpanch/letter-opener.git"
+  },
+  "author": "Aaron Panchal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aaronpanch/letter-opener/issues"
+  },
+  "homepage": "https://github.com/aaronpanch/letter-opener#readme"
+}
