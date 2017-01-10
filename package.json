@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/aaronpanch/letter-opener/issues"
   },
-  "homepage": "https://github.com/aaronpanch/letter-opener#readme"
+  "homepage": "https://github.com/aaronpanch/letter-opener#readme",
+  "dependencies": {
+    "request": "^2.79.0"
+  }
 }
