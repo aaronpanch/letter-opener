@@ -1,23 +1,57 @@
-module.exports = {
+const colors = {
+  release: '#FEC945'
+}
+
+const translations = {
+  ping: () => ({ text: 'Hello World!' }),
   release: payload => {
     const version = payload.release.tag_name
-        , title = payload.release.name
-        , titleLink = payload.release.html_url
-        , desc = payload.release.body
-        , user = payload.release.author.login
-        , repo = payload.repository.name;
+        , url = payload.release.html_url
+        , user = payload.sender.login
+        , userProfile = payload.sender.html_url
+        , repo = payload.repository.name
+        , repoURL = payload.repository.html_url;
 
     return {
       attachments: [
         {
           fallback: `${user} published ${version} of ${repo}.`,
-          pretext: `${user} published a new version of ${repo}.`,
-          color: '#FEC945',
-          title: version,
-          title_link: titleLink,
-          text: desc
+          color: colors['release'],
+          text: `A New Version of ${repo} was published!`,
+          fields: [
+            {
+              title: 'Version',
+              value: `<${url}|${version}>`,
+              short: true
+            },
+            {
+              title: 'Author',
+              value: `<${userProfile}|@${user}>`,
+              short: true
+            },
+            {
+              title: 'Repo',
+              value: `<${repoURL}|${repo}>`,
+              short: true
+            }
+          ]
         }
       ]
     }
+  },
+  create: payload => {
+    switch (payload.ref_type) {
+      case 'tag':
+        const release = {
+          tag_name: payload.ref,
+          html_url: `${payload.repository.html_url}/releases/tag/${payload.ref}`
+        }
+
+        return translations.release(Object.assign({}, payload, { release: release }));
+      default:
+        return null;
+    }
   }
 }
+
+module.exports = translations;
