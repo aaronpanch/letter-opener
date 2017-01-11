@@ -9,7 +9,7 @@ const translations = {
         , url = payload.release.html_url
         , user = payload.sender.login
         , userProfile = payload.sender.html_url
-        , repo = payload.repository.name
+        , repo = payload.repository.full_name
         , repoURL = payload.repository.html_url;
 
     return {
