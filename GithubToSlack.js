@@ -17,7 +17,7 @@ const translations = {
         {
           fallback: `${user} published ${version} of ${repo}.`,
           color: colors['release'],
-          text: `A New Version of ${repo} was published!`,
+          text: `A new version of ${repo} was published!`,
           fields: [
             {
               title: 'Version',
