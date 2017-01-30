@@ -20,5 +20,11 @@ exports.handler = (event, context, callback) => {
         body: body
       });
     });
+  } else {
+    callback(null, {
+      statusCode: 200,
+      headers: {},
+      body: 'ok'
+    });
   }
 };
